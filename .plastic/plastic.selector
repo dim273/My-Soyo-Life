@@ -1,0 +1,4 @@
+repository "My Soyo Life@tj_18778367288_163_com@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
