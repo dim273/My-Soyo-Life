@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Prop
   - 
   - 
   - 
@@ -40,6 +40,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 1554012085
+    locked: 0
+  - name: Prop
+    uniqueID: 401986833
     locked: 0
   - name: Player
     uniqueID: 1490153023

@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
         expBar.fillAmount = Mathf.Lerp(expBar.fillAmount, stats.CurrentExp / stats.NextLevelExp, 10f * Time.deltaTime);
 
         // 更新文字描述
-        levelTMP.text = $"Level {stats.Level}";
+        levelTMP.text = $"等级 {stats.Level}";
         healthTMP.text = $"{stats.Health} / {stats.MaxHealth}";
         manaTMP.text = $"{stats.Mana} / {stats.MaxMana}";
 
