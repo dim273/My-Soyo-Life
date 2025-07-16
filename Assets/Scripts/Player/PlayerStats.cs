@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,19 @@ public class PlayerStats: ScriptableObject
     public float Mana;
     public float MaxMana;
 
+    [Header("Exp")]
+    public float CurrentExp;
+    public float NextLevelExp;
+    public float InitNextLevelExp;
+    [Range(1f, 100f)] public float ExpMultiplier;
+
+
     public void ResetPlayer()
     {
         Mana = MaxMana;
         Health = MaxHealth;
+        CurrentExp = 0f;
+        Level = 1;
+        NextLevelExp = InitNextLevelExp;
     }
 }
