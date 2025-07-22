@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6305191129318845404}
   - component: {fileID: -1512481038262098582}
   - component: {fileID: 8191630496648855447}
+  - component: {fileID: -656541015603940837}
   m_Layer: 7
   m_Name: Enemy-Bear
   m_TagString: Enemy
@@ -208,7 +209,8 @@ MonoBehaviour:
       TrueState: attack
       FalseState: 
   - ID: attack
-    Actions: []
+    Actions:
+    - {fileID: -656541015603940837}
     Transitions:
     - Desicion: {fileID: 8191630496648855447}
       TrueState: 
@@ -289,3 +291,17 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &-656541015603940837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595493591016118808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c841ba37f60e7014f885a25c9f1658dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+  timeBtwAttack: 2
