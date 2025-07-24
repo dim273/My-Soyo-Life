@@ -10,6 +10,7 @@ public class PlayerAnimations : MonoBehaviour
     private readonly int moving = Animator.StringToHash("Moving");
     private readonly int dead = Animator.StringToHash("Dead");
     private readonly int revive = Animator.StringToHash("Revive");
+    private readonly int attacking = Animator.StringToHash("Attacking");
 
 
     private Animator animator;
@@ -49,5 +50,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         SetMoveAnimation(Vector2.down);
         animator.SetTrigger(revive);
+    }
+
+    public void SetAttackAnimation(bool value)
+    {
+        animator.SetBool(attacking, value);
     }
 }
