@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum WeaponType
@@ -15,8 +16,8 @@ public class Weapon : ScriptableObject
     public Sprite Icon;
     public WeaponType type;
     public float Damage;
-
-    [Header("Projectile")]
-    public Projectile ProjectilePrefab;
-    public float RequireMana;
+                 
+    [Header("Projectile")]                               
+    public Projectile ProjectilePrefab;              
+    public float RequireMana;                                        
 }

@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("ÊôÐÔ")]
     [SerializeField] private float speed;
 
+    public Vector2 MoveDirection => moveDirection;
+
     private PlayerAC actions;
     private Rigidbody2D rb2D;
     private Player player;
