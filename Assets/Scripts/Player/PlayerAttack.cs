@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        curWeapon = initWeapon;
+        EquipWeapon(initWeapon);
         actions.Attack.ClickAtack.performed += ctx => Attack();
     }
 
@@ -109,6 +109,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void ManaAttack()
     {
+        // Ä§·¨¹¥»÷
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, curAttackRotation));
         Projectile projectile = Instantiate(curWeapon.ProjectilePrefab, curAttackPosition.position, rotation);
         projectile.Direction = Vector3.up;
@@ -118,6 +119,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void MeleeAttack()
     {
+        // ÎïÀí¹¥»÷
         slashFX.transform.position = curAttackPosition.position;
         slashFX.Play();
         float currentDistanceToEnemy = Vector3.Distance(enemyTarget.transform.position, transform.position);
@@ -125,6 +127,12 @@ public class PlayerAttack : MonoBehaviour
         {
             enemyTarget.GetComponent<IDamageable>().TakeDamage(GetAttackDamage());
         }
+    }
+
+    public void EquipWeapon(Weapon newWeapon)
+    {
+        curWeapon = newWeapon;
+        stats.TotalDamage = stats.BaseDamage + curWeapon.Damage;
     }
 
     private float GetAttackDamage()

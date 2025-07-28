@@ -18,6 +18,7 @@ public class PlayerExp : MonoBehaviour
 
     public void AddExp(float amount)
     {
+        stats.TotalExp += amount;
         stats.CurrentExp += amount;
         while(stats.CurrentExp > stats.NextLevelExp)
         {
