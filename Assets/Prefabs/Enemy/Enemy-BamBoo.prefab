@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -7717430060692450296}
   - component: {fileID: -7117129433776213744}
   - component: {fileID: -591177963845346344}
+  - component: {fileID: 6699056808539255346}
   m_Layer: 7
   m_Name: Enemy-BamBoo
   m_TagString: Enemy
@@ -318,6 +319,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+--- !u!114 &6699056808539255346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749926554512633878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2147e361869cf347bc682cc0d4412c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expDrop: 50
 --- !u!1 &5861112490772724050
 GameObject:
   m_ObjectHideFlags: 0
