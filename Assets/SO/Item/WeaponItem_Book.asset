@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c1b7b72197f2e4981097f38299578c, type: 3}
+  m_Name: WeaponItem_Book
+  m_EditorClassIdentifier: 
+  ID: WeaponBook
+  Name: "\u9B54\u6CD5\u4E66"
+  Icon: {fileID: 21300000, guid: 7bd3c8dbb985b284a9981a67a6b780c1, type: 3}
+  Description: "\u53EF\u4EE5\u53D1\u5C04\u80FD\u91CF\u7403\u7684\u795E\u5947\u9B54\u6CD5\u4E66"
+  Type: 0
+  IsConsumable: 0
+  IsStackable: 0
+  MaxStack: 1
+  Quantity: 0
+  Weapon: {fileID: 11400000, guid: 94264678449f5ba4a8fb2c77e91ba120, type: 2}

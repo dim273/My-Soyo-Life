@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
 
     private void PanelManage()
     {
+        // 管理界面的关闭等信息
         switch(curPanel)
         {
             case 1:
@@ -148,6 +149,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateStatsPanel()
     {
+        // 更新各种UI数据
         statLevelTMP.text = stats.Level.ToString();
         statHealthTMP.text = stats.MaxHealth.ToString();
         statManaTMP.text = stats.MaxMana.ToString();
