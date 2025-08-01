@@ -22748,6 +22748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: ba4f540fe126bf74a987589b65b1d1d6, type: 2}
+  HealthPotionItem: {fileID: 11400000, guid: 5e64433245270a74aa66109930fb91e5, type: 2}
+  ManaPotionItem: {fileID: 11400000, guid: fec1860de96186b43ba5744b18a24238, type: 2}
 --- !u!114 &1458034784
 MonoBehaviour:
   m_ObjectHideFlags: 0

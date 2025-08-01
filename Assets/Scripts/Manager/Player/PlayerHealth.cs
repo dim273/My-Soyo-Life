@@ -34,8 +34,20 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
+    public bool CanRestoreHealth()
+    {
+        return stats.Health > 0f && stats.Health < stats.MaxHealth;
+    }
+
+    public void RestoreHealth(float amount)
+    {
+        stats.Health += amount;
+        stats.Health = Mathf.Min(stats.Health, stats.MaxHealth);
+    }
+
     private void PlayerDead()
     {
+        // ½ÇÉ«ËÀÍö
         playerAnimations.SetDeadAnimation(); 
     }
 }

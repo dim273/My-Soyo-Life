@@ -47,6 +47,8 @@ public class PlayerStats: ScriptableObject
 
     public void ResetPlayer()
     {
+        MaxHealth = 20;
+        MaxMana = 20;
         Mana = MaxMana;
         Health = MaxHealth;
         CurrentExp = 0f;

@@ -21,10 +21,18 @@ public class PlayerMana : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            UseMana(1f);
-        }
+
+    }
+
+    public bool CanRestoreMana()
+    {
+        return stats.Mana > 0f && stats.Mana < stats.MaxMana;
+    }
+
+    public void RestoreMana(float amount)
+    {
+        stats.Mana += amount;
+        stats.Mana = Mathf.Min(stats.Mana, stats.MaxMana);
     }
 
     public void UseMana(float amount)
