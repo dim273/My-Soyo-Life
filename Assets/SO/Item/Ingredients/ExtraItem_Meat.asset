@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e896404bc31fe4f44a99086055252cb7, type: 3}
+  m_Name: ExtraItem_Meat
+  m_EditorClassIdentifier: 
+  ID: meat
+  Name: "\u8089"
+  Icon: {fileID: 21300000, guid: a42a510bbc674d843aa920754f16c637, type: 3}
+  Description: "\u4E00\u5757\u8089\uFF0C\u4E0D\u80FD\u76F4\u63A5\u5403"
+  Type: 3
+  IsConsumable: 0
+  IsStackable: 1
+  MaxStack: 99
+  Quantity: 0

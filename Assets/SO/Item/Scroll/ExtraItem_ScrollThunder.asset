@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e896404bc31fe4f44a99086055252cb7, type: 3}
+  m_Name: ExtraItem_ScrollThunder
+  m_EditorClassIdentifier: 
+  ID: ScrollThunder
+  Name: "\u96F7\u7535\u5377\u8F74"
+  Icon: {fileID: 21300000, guid: 291cb95410b68024b81102a306d31e31, type: 3}
+  Description: "\u4EE5\u96F7\u9706\u51FB\u788E\u9ED1\u6697"
+  Type: 2
+  IsConsumable: 0
+  IsStackable: 1
+  MaxStack: 10
+  Quantity: 0

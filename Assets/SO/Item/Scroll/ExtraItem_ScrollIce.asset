@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e896404bc31fe4f44a99086055252cb7, type: 3}
+  m_Name: ExtraItem_ScrollIce
+  m_EditorClassIdentifier: 
+  ID: ScrollIce
+  Name: "\u5BD2\u51B0\u5377\u8F74"
+  Icon: {fileID: 21300000, guid: 2de0b232a53eb304ebc8fcbd0e9c128f, type: 3}
+  Description: "\u53EF\u4EE5\u53EC\u5524\u5BD2\u51B0"
+  Type: 2
+  IsConsumable: 0
+  IsStackable: 1
+  MaxStack: 10
+  Quantity: 0
