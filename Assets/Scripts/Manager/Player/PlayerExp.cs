@@ -10,10 +10,7 @@ public class PlayerExp : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.E))
-        {
-            AddExp(300);
-        }
+
     }
 
     public void AddExp(float amount)
