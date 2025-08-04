@@ -19,5 +19,5 @@ MonoBehaviour:
   Type: 3
   IsConsumable: 0
   IsStackable: 1
-  MaxStack: 99
+  MaxStack: 49
   Quantity: 0
