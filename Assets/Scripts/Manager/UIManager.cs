@@ -1,9 +1,10 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     [Header("stats")]
     [SerializeField] private PlayerStats stats;
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     [Header("Bag Panel")]
     [SerializeField] private GameObject bagPanel;
 
+
     [Header("Skill Panel")]
     [SerializeField] private GameObject SkillPanel;
 
@@ -60,6 +62,11 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (InventoryUI.instance.DescisionMenu.activeSelf)
+            {
+                InventoryUI.instance.SetDesicionMenu();
+                return;
+            }
             PanelManage();
             if (ifOpenPanel == false)
             {
@@ -169,6 +176,12 @@ public class UIManager : MonoBehaviour
     private void UpgradeCallback()
     {
         UpdateStatsPanel();
+    }
+     
+    public bool ifBagPanelOpen()
+    {
+        // 获取当前背包界面的状态
+        return bagPanel.activeSelf;
     }
 
     private void OnEnable()

@@ -17,19 +17,23 @@ public class Inventory : Singleton<Inventory>
     public void Start()
     {
         inventoryItems = new InventoryItem[inventorySize];
+        VerifyItemForDraw();
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.H))
         {
-            AddItem(testItem, 25);
+            AddItem(testItem, 2);
         }
     }
 
     private void AddItem(InventoryItem item, int quantity)
     {
+        // 首先判断防止出错
         if (item == null || quantity <= 0) return;
+
+        // 紧接着检查背包里是否有这件物品，如果有则
         List<int> itemIndexs = CheckItemStack(item.ID);
         if (item.IsStackable && itemIndexs.Count > 0) 
         {
@@ -49,14 +53,14 @@ public class Inventory : Singleton<Inventory>
                     return;
                 }
             }
-            int quantityToAdd = quantity > item.MaxStack ? item.MaxStack :quantity;
-            AddItemFreeSlot(item, quantityToAdd);
-            int remainingAmount = quantity - quantityToAdd;
-            if (remainingAmount > 0)
-            {
-                AddItem(item, remainingAmount);
-            }
-
+        }
+        // 如果没有，则增加空格
+        int quantityToAdd = quantity > item.MaxStack ? item.MaxStack : quantity;
+        AddItemFreeSlot(item, quantityToAdd);
+        int remainingAmount = quantity - quantityToAdd;
+        if (remainingAmount > 0)
+        {
+            AddItem(item, remainingAmount);
         }
     }
 
@@ -73,11 +77,37 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
+
+    public void UseItem(int index)
+    {
+        // 使用物品
+        if (inventoryItems[index] == null) return;
+        if (inventoryItems[index].UseItem())
+        {
+            DecreaseItemStack(index);
+        }
+    }
+
+    private void DecreaseItemStack(int index)
+    {
+        // 减少物品的数量，然后分两种情况再讨论
+        inventoryItems[index].Quantity--;
+        if (inventoryItems[index].Quantity <= 0)
+        {
+            inventoryItems[index] = null;
+            InventoryUI.instance.DrawItem(null, index);
+        }
+        else
+        {
+            InventoryUI.instance.DrawItem(inventoryItems[index], index);
+        }
+    }
+
     private List<int> CheckItemStack(string itemID)
     {
         // 查找指定物品当前库中是否存在有
         List<int> result = new List<int>();
-        for (int i = 0; i < inventoryItems.Length; i++) 
+        for (int i = 0; i < inventoryItems.Length; i++)
         {
             if (inventoryItems[i] == null) continue;
             if (inventoryItems[i].ID == itemID)
@@ -86,5 +116,16 @@ public class Inventory : Singleton<Inventory>
             }
         }
         return result;
+    }
+
+    private void VerifyItemForDraw()
+    {
+        for(int i = 0; i < inventorySize; i++)
+        {
+            if (inventoryItems[i] == null)
+            {
+                InventoryUI.instance.DrawItem(null, i);
+            }
+        }
     }
 }

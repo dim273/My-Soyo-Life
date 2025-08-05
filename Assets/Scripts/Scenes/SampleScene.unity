@@ -711,6 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466fd65b1e3f4e84db15b66ff7bb85d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  descisionMenu: {fileID: 521374568}
   slotPrefab: {fileID: 7719307678949888159, guid: b9816c5f1e5122b4b8579870464a3aac, type: 3}
   container: {fileID: 1920757977}
 --- !u!114 &79101839
@@ -727,7 +728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySize: 24
   inventoryItems: []
-  testItem: {fileID: 11400000, guid: a10c91d241bbe6d49b6e7e0c865df311, type: 2}
+  testItem: {fileID: 11400000, guid: 5e64433245270a74aa66109930fb91e5, type: 2}
 --- !u!4 &87483342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 462165316734504046, guid: a51820dd427267143aac306e89567b26, type: 3}
@@ -30271,7 +30272,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1574327285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 79101838}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: NoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1574327285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30391,7 +30404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580239250}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 79101838}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: YesButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1580239250
 MonoBehaviour:
   m_ObjectHideFlags: 0
