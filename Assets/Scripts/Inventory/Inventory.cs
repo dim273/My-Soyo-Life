@@ -13,6 +13,7 @@ public class Inventory : Singleton<Inventory>
     public InventoryItem testItem;
 
     public int InventorySize => inventorySize;
+    public InventoryItem[] InventoryItems => inventoryItems;    
 
     public void Start()
     {
@@ -24,7 +25,7 @@ public class Inventory : Singleton<Inventory>
     {
         if(Input.GetKeyDown(KeyCode.H))
         {
-            AddItem(testItem, 2);
+            AddItem(testItem, 1);
         }
     }
 
@@ -82,10 +83,26 @@ public class Inventory : Singleton<Inventory>
     {
         // 使用物品
         if (inventoryItems[index] == null) return;
+
+        // 若为武器，则装备
+        if (inventoryItems[index].Type == ItemType.Weapon)
+        {
+            inventoryItems[index].EquipItem();
+            return;
+        }
+
         if (inventoryItems[index].UseItem())
         {
             DecreaseItemStack(index);
         }
+    }
+
+    public void RemoveItem(int index)
+    {
+        if (inventoryItems[index] == null) return;
+        inventoryItems[index].RemoveItem();
+        inventoryItems[index] = null;
+        InventoryUI.instance.DrawItem(null, index);
     }
 
     private void DecreaseItemStack(int index)

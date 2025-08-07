@@ -7,4 +7,9 @@ public class WeaponItem : InventoryItem
 {
     [Header("Weapon")]
     public Weapon Weapon;
+
+    public override void EquipItem()
+    {
+        WeaponManager.instance.EquipWeapon(Weapon);
+    }
 }

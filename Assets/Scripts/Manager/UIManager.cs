@@ -62,11 +62,6 @@ public class UIManager : Singleton<UIManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (InventoryUI.instance.DescisionMenu.activeSelf)
-            {
-                InventoryUI.instance.SetDesicionMenu();
-                return;
-            }
             PanelManage();
             if (ifOpenPanel == false)
             {
@@ -134,6 +129,8 @@ public class UIManager : Singleton<UIManager>
     private void OpenCloseBagPanel()
     {
         bagPanel.SetActive(!bagPanel.activeSelf);
+        InventoryUI.instance.CloseInventory();
+
     }
 
     private void OpenCloseSkillPanel()
