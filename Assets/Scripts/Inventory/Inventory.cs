@@ -1,3 +1,4 @@
+using BayatGames.SaveGameFree;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class Inventory : Singleton<Inventory>
 {
     [Header("Config")]
+    [SerializeField] private GameContent gameContent;
     [SerializeField] private int inventorySize;
     [SerializeField] private InventoryItem[] inventoryItems;
 
@@ -13,12 +15,15 @@ public class Inventory : Singleton<Inventory>
     public InventoryItem testItem;
 
     public int InventorySize => inventorySize;
-    public InventoryItem[] InventoryItems => inventoryItems;    
+    public InventoryItem[] InventoryItems => inventoryItems;
+
+    private readonly string INVENTORY_KEY_DATA = "MY_INVENTORY";
 
     public void Start()
     {
         inventoryItems = new InventoryItem[inventorySize];
         VerifyItemForDraw();
+        LoadInventory();
     }
 
     private void Update()
@@ -51,6 +56,7 @@ public class Inventory : Singleton<Inventory>
                         AddItem(item, dif);
                     }
                     InventoryUI.instance.DrawItem(inventoryItems[index], index);
+                    SaveInventory();
                     return;
                 }
             }
@@ -63,6 +69,7 @@ public class Inventory : Singleton<Inventory>
         {
             AddItem(item, remainingAmount);
         }
+        SaveInventory();
     }
 
     private void AddItemFreeSlot(InventoryItem item, int quantity)
@@ -94,6 +101,7 @@ public class Inventory : Singleton<Inventory>
         if (inventoryItems[index].UseItem())
         {
             DecreaseItemStack(index);
+            SaveInventory();
         }
     }
 
@@ -103,6 +111,7 @@ public class Inventory : Singleton<Inventory>
         inventoryItems[index].RemoveItem();
         inventoryItems[index] = null;
         InventoryUI.instance.DrawItem(null, index);
+        SaveInventory();
     }
 
     private void DecreaseItemStack(int index)
@@ -144,5 +153,66 @@ public class Inventory : Singleton<Inventory>
                 InventoryUI.instance.DrawItem(null, i);
             }
         }
+    }
+
+    private InventoryItem ItemExistsInGameContent(string itemID)
+    {
+        // 在所有的游戏物品里面寻找对应的物品
+        for (int i = 0; i < gameContent.GameItems.Length; i++)
+        {
+            if (gameContent.GameItems[i].ID == itemID)
+            {
+                return gameContent.GameItems[i];
+            }
+        }
+        return null;
+    }
+
+    private void LoadInventory()
+    {
+        // 加载保存的物品
+        if (SaveGame.Exists(INVENTORY_KEY_DATA))
+        {
+            InventoryData loadData = SaveGame.Load<InventoryData>(INVENTORY_KEY_DATA);
+            for(int i = 0;i < inventorySize; i++)
+            {
+                if (loadData.ItemContent[i] != null)
+                {
+                    InventoryItem itemFromContent = ItemExistsInGameContent(loadData.ItemContent[i]);
+                    if (itemFromContent != null)
+                    {
+                        inventoryItems[i] = itemFromContent.CopyItem();
+                        inventoryItems[i].Quantity = loadData.ItemQuantity[i];
+                        InventoryUI.instance.DrawItem(inventoryItems[i], i);
+                    }
+                }
+                else
+                {
+                    inventoryItems[i] = null;
+                }
+            }
+        }
+    }
+
+    private void SaveInventory()
+    {
+        // 保存背包数据
+        InventoryData saveData = new InventoryData();
+        saveData.ItemContent = new string[inventorySize];
+        saveData.ItemQuantity = new int[inventorySize];
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (inventoryItems[i] == null)
+            {
+                saveData.ItemContent[i] = null;
+                saveData.ItemQuantity[i] = 0;
+            }
+            else
+            {
+                saveData.ItemContent[i] = inventoryItems[i].ID;
+                saveData.ItemQuantity[i] = inventoryItems[i].Quantity;
+            }
+        }
+        SaveGame.Save(INVENTORY_KEY_DATA, saveData);
     }
 }
