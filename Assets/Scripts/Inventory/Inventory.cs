@@ -34,7 +34,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
-    private void AddItem(InventoryItem item, int quantity)
+    public void AddItem(InventoryItem item, int quantity)
     {
         // Ê×ÏÈÅÐ¶Ï·ÀÖ¹³ö´í
         if (item == null || quantity <= 0) return;

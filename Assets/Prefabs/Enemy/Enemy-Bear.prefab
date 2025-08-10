@@ -348,6 +348,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expDrop: 50
+  dropItems:
+  - Name: PotionHealth
+    Item: {fileID: 11400000, guid: 5e64433245270a74aa66109930fb91e5, type: 2}
+    Quantity: 2
+    DropChance: 80
+  - Name: Honey
+    Item: {fileID: 11400000, guid: 2e36ec0af4e7f5a48b5c89ffdd7329b6, type: 2}
+    Quantity: 2
+    DropChance: 50
+  - Name: Sword
+    Item: {fileID: 11400000, guid: 0c127b0326d7bde4683868980b7083e9, type: 2}
+    Quantity: 1
+    DropChance: 10
+  - Name: Nut
+    Item: {fileID: 11400000, guid: 8187ff83779f9c6448acab5167adab90, type: 2}
+    Quantity: 1
+    DropChance: 20
+  - Name: 
+    Item: {fileID: 0}
+    Quantity: 0
+    DropChance: 0
 --- !u!1 &1860180048220425252
 GameObject:
   m_ObjectHideFlags: 0

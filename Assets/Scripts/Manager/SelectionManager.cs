@@ -26,6 +26,7 @@ public class SelectionManager : MonoBehaviour
 
     private void SelectEnemy()
     {
+        // µã»÷Ë÷µÐ
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -35,8 +36,16 @@ public class SelectionManager : MonoBehaviour
                 EnemyBrain enemy = hit.collider.GetComponent<EnemyBrain>();
                 if (enemy == null)  return;
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-                if (enemyHealth.CurrentHealth <= 0f) return;
-                OnEnemySelectedEvent?.Invoke(enemy);
+
+                // ËÀÍöÉú³ÉµôÂäÎï
+                if (enemyHealth.CurrentHealth <= 0f)    
+                {
+                    EnemyLoot enemyLoot = enemyHealth.GetComponent<EnemyLoot>();
+                    LootManager.instance.ShowLoot(enemyLoot);
+                }
+                else {
+                    OnEnemySelectedEvent?.Invoke(enemy);
+                }
             }
             else
             {
