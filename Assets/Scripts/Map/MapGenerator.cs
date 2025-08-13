@@ -1,16 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
+[Serializable]
+public class ItemSpawnData
+{
+    public TileBase Tile;
+    public int weight;
+}
 
 public class MapGenerator : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private Tilemap groundTileMap;
+    [SerializeField] private Tilemap itemTileMap;
     [SerializeField] private TileBase grassTile;         // 草地类方块
     [SerializeField] private TileBase desertTile;        // 沙漠类方块
     [SerializeField] private float lacunatity;           // 空隙度
+    [SerializeField] private List<ItemSpawnData> spawnDatas; // 装饰物
 
     [Header("Map")]
     public int width;                   // 宽
@@ -27,13 +37,13 @@ public class MapGenerator : MonoBehaviour
 
     private float[,] mapData;           // 地图的信息
 
-
     public void GenerateMap()
     {
         GenerateMapData();
         for (int i = 0; i < removeSeparateTileNumberOfTimes; i++) 
         {
-            RemoveSeparateTile();
+            bool noSeparate = RemoveSeparateTile();
+            if (noSeparate) break;
         }
         GenerateTileMap();
     }
@@ -83,24 +93,61 @@ public class MapGenerator : MonoBehaviour
                 groundTileMap.SetTile(new Vector3Int(x, y), tile);
             }
         }
-    }
 
-    private void RemoveSeparateTile()
-    {
+        // 计算总的权重
+        int weightTotal = 0;
+        for (int i = 0; i < spawnDatas.Count; i++)
+        {
+            weightTotal += spawnDatas[i].weight;
+        }
+
+        // 根据权重生成装饰物
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                if(CheckMapTile(x, y) && GetNeighborGroundCount(x, y))
+                if(CheckMapTile(x, y) && GetNeighborGroundCount(x, y) == 8)
                 {
-                    mapData[x, y] = 1;
+                    float randValue = UnityEngine.Random.Range(1, weightTotal + 1);
+                    float temp = 0;
+
+                    for(int i = 0; i < spawnDatas.Count; i++)
+                    {
+                        temp += spawnDatas[i].weight;
+                        if(randValue < temp)
+                        {
+                            if (spawnDatas[i].Tile)
+                            {
+                                itemTileMap.SetTile(new Vector3Int(x, y), spawnDatas[i].Tile);
+                            }
+                            break;
+                        }
+                    }
                 }
             }
         }
     }
 
-    private bool GetNeighborGroundCount(int x, int y)
+    private bool RemoveSeparateTile()
     {
+        bool ifSet = false;
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if(CheckMapTile(x, y) && IsErrowTile(x, y))
+                {
+                    mapData[x, y] = 1;
+                    ifSet = true;
+                }
+            }
+        }
+        return ifSet;
+    }
+
+    private bool IsErrowTile(int x, int y)
+    {
+        // 判断该方块是否正确放置
         int count = 0;
         bool _up = false, _down = false, _left = false, _right = false;
         // up
@@ -119,6 +166,30 @@ public class MapGenerator : MonoBehaviour
         return false;
     }
 
+    private int GetNeighborGroundCount(int x, int y)
+    {
+        int count = 0;
+
+        // up
+        if (InRange(x, y + 1) && CheckMapTile(x, y + 1)) count++; 
+        // down
+        if (InRange(x, y - 1) && CheckMapTile(x, y - 1)) count++; 
+        // left
+        if (InRange(x - 1, y) && CheckMapTile(x - 1, y)) count++; 
+        // right
+        if (InRange(x + 1, y) && CheckMapTile(x + 1, y)) count++;
+        // up left
+        if (InRange(x - 1, y + 1) && CheckMapTile(x - 1, y + 1)) count++;
+        // up right
+        if (InRange(x + 1, y + 1) && CheckMapTile(x + 1, y + 1)) count++;
+        // down left
+        if (InRange(x - 1, y - 1) && CheckMapTile(x - 1, y - 1)) count++;
+        // down right
+        if (InRange(x + 1, y - 1) && CheckMapTile(x + 1, y - 1)) count++;
+
+        return count;
+    }
+
     private bool InRange(int x, int y)
     {
         return x >= 0 && y >= 0 && x < width && y < height;
@@ -132,5 +203,6 @@ public class MapGenerator : MonoBehaviour
     public void CleanMap()
     {
         groundTileMap.ClearAllTiles();
+        itemTileMap.ClearAllTiles();
     }
 }
