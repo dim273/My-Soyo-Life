@@ -7,7 +7,7 @@ public class Singleton<T> : MonoBehaviour  where T : MonoBehaviour
     // 建立一个通用的单例模式
     public static T instance {  get; private set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         instance = this as T;
     }
