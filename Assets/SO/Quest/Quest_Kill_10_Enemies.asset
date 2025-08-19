@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6732ce07a057e6944b4d3357c18ee958, type: 3}
+  m_Name: Quest_Kill_10_Enemies
+  m_EditorClassIdentifier: 
+  Name: "\u602A\u7269\u6E05\u7406"
+  ID: Kill10Enemy
+  QuestGoal: 10
+  Description: "\u5E2E\u52A9\u6E05\u7406\u5468\u56F4\u7684\u602A\u7269, \u6740\u6B7B10\u53EA\u602A\u7269"
+  GoldReward: 100
+  ExpReward: 500
+  ItemReward:
+    Item: {fileID: 11400000, guid: 5e64433245270a74aa66109930fb91e5, type: 2}
+    Quantity: 2
+  CurrentStatus: 0
+  QuestCompleted: 0
+  QuestAccepted: 0

@@ -43,7 +43,10 @@ public class UIManager : Singleton<UIManager>
 
 
     [Header("Skill Panel")]
-    [SerializeField] private GameObject SkillPanel;
+    [SerializeField] private GameObject QuestPanel;
+
+    [Header("Other Panel")]
+    [SerializeField] private GameObject npcQuestPanel;
 
     private int curPanel;
     private bool ifOpenPanel;
@@ -92,7 +95,7 @@ public class UIManager : Singleton<UIManager>
         PanelManage();
     }
 
-    public void SkillPanelButton()
+    public void QuestPanelButton()
     {
         if (curPanel == 3) return;
         PanelManage();
@@ -112,7 +115,7 @@ public class UIManager : Singleton<UIManager>
                 OpenCloseBagPanel();
                 break;
             case 3:
-                OpenCloseSkillPanel();
+                OpenCloseQuestPanel();
                 break;
         }
     }
@@ -133,9 +136,9 @@ public class UIManager : Singleton<UIManager>
 
     }
 
-    private void OpenCloseSkillPanel()
+    private void OpenCloseQuestPanel()
     {
-        SkillPanel.SetActive(!SkillPanel.activeSelf);
+        QuestPanel.SetActive(!QuestPanel.activeSelf);
     }
 
     private void UpdateUI()
@@ -174,6 +177,24 @@ public class UIManager : Singleton<UIManager>
     {
         UpdateStatsPanel();
     }
+
+    public void OpenCloseNPCQuestPanel(bool value)
+    {
+        // 控制npc任务面板的开关
+        npcQuestPanel.SetActive(value);
+    }
+
+    private void ExtraInteractionCallback(InteractionType type)
+    {
+        switch(type)
+        {
+            case InteractionType.Quest:
+                OpenCloseNPCQuestPanel(true);
+                break;
+            case InteractionType.Shop:
+                break;
+        }
+    }
      
     public bool ifBagPanelOpen()
     {
@@ -184,10 +205,13 @@ public class UIManager : Singleton<UIManager>
     private void OnEnable()
     {
         PlayerUpgrade.OnPlayerUpgradeEvent += UpgradeCallback;
+        DialogueManager.OnExtraInteractionEvent += ExtraInteractionCallback;
+        
     }
 
     private void OnDisable()
     {
         PlayerUpgrade.OnPlayerUpgradeEvent -= UpgradeCallback;
+        DialogueManager.OnExtraInteractionEvent -= ExtraInteractionCallback;
     }
 }
