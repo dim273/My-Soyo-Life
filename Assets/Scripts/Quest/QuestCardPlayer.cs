@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class QuestCardNPC : QuestCard
+public class QuestCardPlayer : QuestCard
 {
+    [Header("Config")]
+    [SerializeField] private TextMeshProUGUI statusTMP;
     [SerializeField] private TextMeshProUGUI questRewardTMP;
 
     public override void ConfigQuestUI(Quest quest)
@@ -13,13 +15,6 @@ public class QuestCardNPC : QuestCard
         questRewardTMP.text = $"½±Àø: {quest.GoldReward}½ð±Ò, " +
                               $"{quest.ExpReward}Exp, " +
                               $"x{quest.ItemReward.Quantity}{quest.ItemReward.Item.Name}";
-    }
-
-    public void AcceptQuest()
-    {
-        if (QuestToComplete == null) return;
-        QuestToComplete.QuestAccepted = true;
-        QuestManager.instance.AcceptQuest(QuestToComplete);
-        gameObject.SetActive(false);
+        statusTMP.text = $"½ø¶È\n{quest.CurrentStatus}/{quest.QuestGoal}";
     }
 }

@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
-{
+public class QuestManager : Singleton<QuestManager>
+{ 
     [Header("Config")]
     [SerializeField] private Quest[] quests;
 
+    [Header("NPC Quest Panel")]
     [SerializeField] private QuestCardNPC questCardNpcPrefab;
     [SerializeField] private Transform npcPanelContainer;
 
+    [Header("Player Quest Panel")]
+    [SerializeField] private QuestCardPlayer questCardPlayerPrefab;
+    [SerializeField] private Transform playerPanelContainer;
+ 
     private void Start()
     {
         LoadQuestsIntroNPCPanel();
+    }
+
+    public void AcceptQuest(Quest quest)
+    {
+        QuestCardPlayer playerCard = Instantiate(questCardPlayerPrefab, playerPanelContainer);
+        playerCard.ConfigQuestUI(quest);
     }
 
     private void LoadQuestsIntroNPCPanel()
