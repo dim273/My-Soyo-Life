@@ -9,6 +9,14 @@ public class QuestCardPlayer : QuestCard
     [SerializeField] private TextMeshProUGUI statusTMP;
     [SerializeField] private TextMeshProUGUI questRewardTMP;
 
+    [Header("Claim")]
+    [SerializeField] private GameObject claimButton;
+
+    private void Update()
+    {
+        statusTMP.text = $"进度\n{QuestToComplete.CurrentStatus}/{QuestToComplete.QuestGoal}";
+    }
+
     public override void ConfigQuestUI(Quest quest)
     {
         base.ConfigQuestUI(quest);
@@ -16,5 +24,27 @@ public class QuestCardPlayer : QuestCard
                               $"{quest.ExpReward}Exp, " +
                               $"x{quest.ItemReward.Quantity}{quest.ItemReward.Item.Name}";
         statusTMP.text = $"进度\n{quest.CurrentStatus}/{quest.QuestGoal}";
+    }
+
+    public void ClaimQuest()
+    {
+        // 完成任务领取奖励的按钮
+        GameManager.instance.AddPlayerExp(QuestToComplete.ExpReward);
+        Inventory.instance.AddItem(QuestToComplete.ItemReward.Item, QuestToComplete.ItemReward.Quantity);
+        CoinManager.instance.AddCoins(QuestToComplete.GoldReward);
+        gameObject.SetActive(false);
+    }
+
+    private void QuestCompletedCheck()
+    {
+        if (QuestToComplete.QuestCompleted)
+        {
+            claimButton.SetActive(true);
+        }
+    }
+
+    private void OnEnable()
+    {
+        QuestCompletedCheck();
     }
 }

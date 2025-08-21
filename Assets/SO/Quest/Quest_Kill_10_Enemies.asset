@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u602A\u7269\u6E05\u7406"
   ID: Kill10Enemy
-  QuestGoal: 10
+  QuestGoal: 2
   Description: "\u5E2E\u52A9\u6E05\u7406\u5468\u56F4\u7684\u602A\u7269, \u6740\u6B7B10\u53EA\u602A\u7269"
   GoldReward: 100
   ExpReward: 500
   ItemReward:
     Item: {fileID: 11400000, guid: 5e64433245270a74aa66109930fb91e5, type: 2}
     Quantity: 2
-  CurrentStatus: 0
-  QuestCompleted: 0
-  QuestAccepted: 0
+  CurrentStatus: 2
+  QuestCompleted: 1
+  QuestAccepted: 1
