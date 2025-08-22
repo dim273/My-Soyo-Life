@@ -11,6 +11,7 @@ public class QuestCardPlayer : QuestCard
 
     [Header("Claim")]
     [SerializeField] private GameObject claimButton;
+    [SerializeField] private GameObject questStatus;
 
     private void Update()
     {
@@ -40,6 +41,7 @@ public class QuestCardPlayer : QuestCard
         if (QuestToComplete.QuestCompleted)
         {
             claimButton.SetActive(true);
+            questStatus.SetActive(false);
         }
     }
 
