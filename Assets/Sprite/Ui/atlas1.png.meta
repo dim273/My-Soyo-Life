@@ -189,7 +189,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,6 +197,69 @@ TextureImporter:
       bones: []
       spriteID: 3db83023646536745a4311d6f9af9c15
       internalID: -936562649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas1_5
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 109
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b62694701be66041a0bab3f2c69df1f
+      internalID: -232388002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas1_6
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 141
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f2255b742f18144b8498367a4beb77
+      internalID: -1191884531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas1_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 32
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f82aeca182904347a647075ece8d211
+      internalID: 595925473
       vertices: []
       indices: 
       edges: []
@@ -217,6 +280,9 @@ TextureImporter:
       atlas1_2: 855946118
       atlas1_3: -1242514351
       atlas1_4: -936562649
+      atlas1_5: -232388002
+      atlas1_6: -1191884531
+      atlas1_7: 595925473
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

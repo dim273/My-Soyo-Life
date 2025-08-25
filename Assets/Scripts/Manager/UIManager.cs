@@ -13,6 +13,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI levelTMP;
     [SerializeField] private TextMeshProUGUI healthTMP;
     [SerializeField] private TextMeshProUGUI manaTMP;
+    [SerializeField] private TextMeshProUGUI coinTMP;
 
     [Header("Image")]
     [SerializeField] private Image healthBar;
@@ -41,12 +42,18 @@ public class UIManager : Singleton<UIManager>
     [Header("Bag Panel")]
     [SerializeField] private GameObject bagPanel;
 
+    [Header("Quest Panel")]
+    [SerializeField] private GameObject questPanel;
 
     [Header("Skill Panel")]
-    [SerializeField] private GameObject QuestPanel;
+    [SerializeField] private GameObject skillPanel;
+
+    [Header("Setting Panel")]
+    [SerializeField] private GameObject settingPanel;
 
     [Header("Other Panel")]
     [SerializeField] private GameObject npcQuestPanel;
+    [SerializeField] private GameObject npcShopPanel;
 
     private int curPanel;
     private bool ifOpenPanel;
@@ -79,6 +86,32 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+    // 菜单切换管理
+    private void PanelManage()
+    {
+        // 管理界面的关闭等信息
+        switch (curPanel)
+        {
+            case 1:
+                OpenCloseStatsPanel();
+                break;
+            case 2:
+                OpenCloseBagPanel();
+                break;
+            case 3:
+                OpenCloseQuestPanel();
+                break;
+            case 4:
+                OpenCloseSkillPanel();
+                break;
+            case 5:
+                OpenCloseSettingPanel();
+                break;
+        }
+    }
+
+    // 各种panel的切换按钮
+    /**********************************************************************************************************************************/
     public void StatPanelButton()
     {
         if (curPanel == 1) return;
@@ -103,23 +136,27 @@ public class UIManager : Singleton<UIManager>
         PanelManage();
     }
 
-    private void PanelManage()
+    public void SkillPanelButton()
     {
-        // 管理界面的关闭等信息
-        switch(curPanel)
-        {
-            case 1:
-                OpenCloseStatsPanel();
-                break;
-            case 2:
-                OpenCloseBagPanel();
-                break;
-            case 3:
-                OpenCloseQuestPanel();
-                break;
-        }
+        if (curPanel == 4) return;
+        PanelManage();
+        curPanel = 4;
+        PanelManage();
     }
 
+    public void SettingPanelButton()
+    {
+        if (curPanel == 5) return;
+        PanelManage();
+        curPanel = 5;
+        PanelManage();
+    }
+    /**********************************************************************************************************************************/
+
+   
+
+    // 各种panel的开关控制函数
+    /**********************************************************************************************************************************/
     private void OpenCloseStatsPanel()
     {
         statsPanel.SetActive(!statsPanel.activeSelf);
@@ -133,13 +170,24 @@ public class UIManager : Singleton<UIManager>
     {
         bagPanel.SetActive(!bagPanel.activeSelf);
         InventoryUI.instance.CloseInventory();
-
     }
 
     private void OpenCloseQuestPanel()
     {
-        QuestPanel.SetActive(!QuestPanel.activeSelf);
+        questPanel.SetActive(!questPanel.activeSelf);
     }
+
+    private void OpenCloseSkillPanel()
+    {
+        skillPanel.SetActive(!skillPanel.activeSelf);
+    }
+
+    private void OpenCloseSettingPanel()
+    {
+        settingPanel.SetActive(!settingPanel.activeSelf);
+    }
+    /**********************************************************************************************************************************/
+
 
     private void UpdateUI()
     {
@@ -152,6 +200,7 @@ public class UIManager : Singleton<UIManager>
         levelTMP.text = $"等级 {stats.Level}";
         healthTMP.text = $"{stats.Health} / {stats.MaxHealth}";
         manaTMP.text = $"{stats.Mana} / {stats.MaxMana}";
+        coinTMP.text = $"{CoinManager.instance.Coins}";
     }
 
     private void UpdateStatsPanel()
@@ -184,14 +233,22 @@ public class UIManager : Singleton<UIManager>
         npcQuestPanel.SetActive(value);
     }
 
+    public void OpenCloseNPCShopPanel(bool value)
+    {
+        // 控制商店界面的开关
+        npcShopPanel.SetActive(value);
+    }
+
     private void ExtraInteractionCallback(InteractionType type)
     {
+        // 根据npc的类型打开不同的ui面板
         switch(type)
         {
             case InteractionType.Quest:
                 OpenCloseNPCQuestPanel(true);
                 break;
             case InteractionType.Shop:
+                OpenCloseNPCShopPanel(true);
                 break;
         }
     }
@@ -206,7 +263,6 @@ public class UIManager : Singleton<UIManager>
     {
         PlayerUpgrade.OnPlayerUpgradeEvent += UpgradeCallback;
         DialogueManager.OnExtraInteractionEvent += ExtraInteractionCallback;
-        
     }
 
     private void OnDisable()
