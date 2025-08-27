@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private float speed;
+    [SerializeField] private float destroyTime;
 
     public Vector3 Direction { get; set; }
     public float Damage {  get; set; }

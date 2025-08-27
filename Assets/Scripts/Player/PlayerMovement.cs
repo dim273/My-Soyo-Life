@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("属性")]
+    [Header("Config")]
     [SerializeField] private float speed;
 
     public Vector2 MoveDirection => moveDirection;
+
+    private bool canMove;
 
     private PlayerAC actions;
     private Rigidbody2D rb2D;
@@ -26,12 +28,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-
+        canMove = true;
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (canMove) Move();
     }
 
     private void Update()
@@ -41,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        if (player.Stats.Health <= 0) return;
+        if (player.Stats.Health <= 0 || !GameManager.instance.canMove) return;
         rb2D.MovePosition(rb2D.position + moveDirection * (speed * Time.fixedDeltaTime));
     }
 
@@ -57,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
         playerAnimations.SetMoveAnimation(moveDirection);
         
     }
+
+    // 控制canMove的值
+    public void ChangeMoveState(bool value) => canMove = value;
 
     private void OnEnable()
     {

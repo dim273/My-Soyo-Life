@@ -47,13 +47,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (enemyTarget == null) return;
-        if(attackCoroutine != null)
-        {
-            // 如果存在进程，则停止
-            StopCoroutine(attackCoroutine);
-        }
-
+        if(attackCoroutine != null) return;
         attackCoroutine = StartCoroutine(IEAttack());
     } 
 
@@ -89,22 +83,30 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator IEAttack()
     {
         // 如果位置没有，则返回
-        if (curAttackPosition == null) yield break;
-        // 选择武器的类别
+        if (curAttackPosition == null) curAttackPosition = attackPositions[0];
+        playerMovement.ChangeMoveState(false);
+        playerAnimations.SetAttackAnimation(true);
+        // 选择武器的类别，等待前摇过后启动攻击函数
+        yield return new WaitForSeconds(curWeapon.WindUpTime);
         if (curWeapon.type == WeaponType.Magic) 
         {
-            if (playerMana.CurrentMana < curWeapon.RequireMana) yield break;
+            if (playerMana.CurrentMana < curWeapon.RequireMana)
+            {
+                playerMovement.ChangeMoveState(true);
+                playerAnimations.SetAttackAnimation(false);
+                attackCoroutine = null;
+                yield break;
+            }
             ManaAttack();
         }
         else
         {
             MeleeAttack();
         }
-        playerAnimations.SetAttackAnimation(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(curWeapon.WindDownTime);
         playerAnimations.SetAttackAnimation(false);
-
-        
+        playerMovement.ChangeMoveState(true);
+        attackCoroutine = null;
     }
 
     private void ManaAttack()

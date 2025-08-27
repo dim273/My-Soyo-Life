@@ -31,17 +31,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            if (HealthPotionItem.UseItem())
-            {
-                Debug.Log("Use Health Potion");
-            }
-            if (ManaPotionItem.UseItem()) 
-            {
-                Debug.Log("Use Mana Potion");
-            }
-        }
+        
     }
 
     public void ResetPlayer()

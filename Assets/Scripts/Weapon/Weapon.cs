@@ -16,6 +16,8 @@ public class Weapon : ScriptableObject
     public Sprite Icon;
     public WeaponType type;
     public float Damage;
+    public float WindUpTime;    // «∞“°
+    public float WindDownTime;  // ∫Û“°
                  
     [Header("Projectile")]                               
     public Projectile ProjectilePrefab;              
