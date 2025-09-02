@@ -31,6 +31,12 @@ public class EnemySelector : MonoBehaviour
         selectorSprite.SetActive(false);
     }
 
+    // 返回选中的状态，用于解决击杀未选中的敌人产生的bug
+    public bool ReturnStateOfSprite()
+    {
+        return selectorSprite.activeSelf;
+    }
+
     private void OnEnable()
     {
         SelectionManager.OnEnemySelectedEvent += EnemySelectedCallback;

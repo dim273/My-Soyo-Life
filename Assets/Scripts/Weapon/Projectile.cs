@@ -11,8 +11,17 @@ public class Projectile : MonoBehaviour
     public Vector3 Direction { get; set; }
     public float Damage {  get; set; }
 
+    private float timer;
+
+    private void Start()
+    {
+        timer = destroyTime;
+    }
+
     private void Update()
     {
+        timer -= Time.deltaTime;
+        if (timer < 0) Destroy(gameObject); 
         transform.Translate(Direction * (speed * Time.deltaTime));
     }
 

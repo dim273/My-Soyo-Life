@@ -43,7 +43,8 @@ public class SelectionManager : MonoBehaviour
                     EnemyLoot enemyLoot = enemyHealth.GetComponent<EnemyLoot>();
                     LootManager.instance.ShowLoot(enemyLoot);
                 }
-                else {
+                else 
+                {
                     OnEnemySelectedEvent?.Invoke(enemy);
                 }
             }
@@ -53,6 +54,4 @@ public class SelectionManager : MonoBehaviour
             }
         }
     }
-
-
 }

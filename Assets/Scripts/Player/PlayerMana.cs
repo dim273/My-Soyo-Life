@@ -21,7 +21,7 @@ public class PlayerMana : MonoBehaviour
 
     private void Update()
     {
-
+        CurrentMana = stats.Mana;
     }
 
     public bool CanRestoreMana()
@@ -38,7 +38,6 @@ public class PlayerMana : MonoBehaviour
     public void UseMana(float amount)
     {
         stats.Mana = Mathf.Max(stats.Mana -= amount, 0f);
-        CurrentMana = stats.Mana;
     }
 
     public void ResetMana()
@@ -46,3 +45,4 @@ public class PlayerMana : MonoBehaviour
         CurrentMana = stats.MaxMana;
     }
 }
+

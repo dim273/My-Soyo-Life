@@ -49,9 +49,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void EnemyDead()
     {
+        // µĞÈËËÀÍö£¬²¥·ÅËÀÍö¶¯»­£¬¹Ø±Õai£¬ÉèÖÃÅö×²£¬µôÂä
         animator.SetTrigger("Dead");
         enemyBrain.enabled = false;
-        enemySelector.NoSelectionCallback();
+
+        if (enemySelector.ReturnStateOfSprite()) enemySelector.NoSelectionCallback();
+
         rb2D.bodyType = RigidbodyType2D.Static;
         OnEnemyDeadEvent?.Invoke();
         GameManager.instance.AddPlayerExp(enemyLoot.ExpDrop);

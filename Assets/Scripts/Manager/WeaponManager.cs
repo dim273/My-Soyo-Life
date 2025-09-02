@@ -10,8 +10,9 @@ public class WeaponManager : Singleton<WeaponManager>
     [SerializeField] private Image weaponIcon;
     [SerializeField] private TextMeshProUGUI weaponManaTMP;
 
-    public void EquipWeapon(Weapon weapon)
-    {
+
+    public void EquipWeapon(Weapon weapon)     
+    {    
         weaponIcon.sprite = weapon.Icon;
         weaponIcon.SetNativeSize();
         weaponIcon.gameObject.SetActive(true);

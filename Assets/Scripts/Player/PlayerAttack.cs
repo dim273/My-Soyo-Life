@@ -111,8 +111,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void ManaAttack()
     {
-        // 魔法攻击
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, curAttackRotation));
+        // 魔法攻击
+        if (enemyTarget != null) 
+        {
+            // 如果锁定了敌人，则重新计算攻击角度
+            Vector2 direction = enemyTarget.transform.position - transform.position;
+            float radian =  Mathf.Atan2(direction.y, direction.x);
+            float angle =  radian * Mathf.Rad2Deg - 90f;
+            rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        }
         Projectile projectile = Instantiate(curWeapon.ProjectilePrefab, curAttackPosition.position, rotation);
         projectile.Direction = Vector3.up;
         projectile.Damage = GetAttackDamage();
@@ -152,11 +160,11 @@ public class PlayerAttack : MonoBehaviour
     private void EnemySelectedCallback(EnemyBrain enemySelected)
     {
         enemyTarget = enemySelected;
-
     }
 
     private void NoEnemySelectedCallback()
     {
+        if (enemyTarget != null && enemyTarget.enabled) return;
         enemyTarget = null;
     }
 

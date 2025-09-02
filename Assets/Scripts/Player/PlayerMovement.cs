@@ -38,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        ReadMovement();
+        if (canMove) ReadMovement();
     }
 
     private void Move()
     {
-        if (player.Stats.Health <= 0 || !GameManager.instance.canMove) return;
+        if (player.Stats.Health <= 0 || !canMove) return;
         rb2D.MovePosition(rb2D.position + moveDirection * (speed * Time.fixedDeltaTime));
     }
 
