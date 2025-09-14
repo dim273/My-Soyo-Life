@@ -38,6 +38,8 @@ public class PlayerAttack : MonoBehaviour
     {
         WeaponManager.instance.EquipWeapon(initWeapon);
         actions.Attack.ClickAtack.performed += ctx => Attack();
+        curWeapon = initWeapon;
+        stats.TotalDamage = stats.BaseDamage + curWeapon.Damage;
     }
 
     private void Update()
@@ -147,8 +149,9 @@ public class PlayerAttack : MonoBehaviour
 
     private float GetAttackDamage()
     {
-        float damage = stats.BaseDamage;
-        damage += curWeapon.Damage;
+        // 计算伤害，由武器的基础伤害加上角色的基础伤害与武器伤害加成的乘积
+        float damage = stats.BaseDamage * curWeapon.DamageBonus + curWeapon.Damage;
+        // 计算暴击
         float randomPerc = Random.Range(0f, 100);
         if(randomPerc <= stats.CriticalChance)
         {

@@ -16,6 +16,7 @@ public class Weapon : ScriptableObject
     public Sprite Icon;
     public WeaponType type;
     public float Damage;
+    public float DamageBonus;
     public float WindUpTime;    // วฐาก
     public float WindDownTime;  // บ๓าก
                  

@@ -1,37 +1,29 @@
-using BayatGames.SaveGameFree;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
-public class Inventory : Singleton<Inventory>
+public class Inventory : Singleton<Inventory>, ISaveManager
 {
     [Header("Config")]
     [SerializeField] private GameContent gameContent;
     [SerializeField] private int inventorySize;
     [SerializeField] private InventoryItem[] inventoryItems;
 
-    [Header("Testing")]
-    public InventoryItem testItem;
 
     public int InventorySize => inventorySize;
     public InventoryItem[] InventoryItems => inventoryItems;
 
-    private readonly string INVENTORY_KEY_DATA = "MY_INVENTORY";
+    private InventoryItem[] inventoryToLoad;
 
-    public void Start()
+    private void Start()
     {
         inventoryItems = new InventoryItem[inventorySize];
         VerifyItemForDraw();
-        LoadInventory();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            AddItem(testItem, 1);
-        }
+        LoadGame();
     }
 
     public void AddItem(InventoryItem item, int quantity)
@@ -56,7 +48,6 @@ public class Inventory : Singleton<Inventory>
                         AddItem(item, dif);
                     }
                     InventoryUI.instance.DrawItem(inventoryItems[index], index);
-                    SaveInventory();
                     return;
                 }
             }
@@ -69,7 +60,6 @@ public class Inventory : Singleton<Inventory>
         {
             AddItem(item, remainingAmount);
         }
-        SaveInventory();
     }
 
     private void AddItemFreeSlot(InventoryItem item, int quantity)
@@ -84,7 +74,6 @@ public class Inventory : Singleton<Inventory>
             return; 
         }
     }
-
 
     public void UseItem(int index)
     {
@@ -101,7 +90,6 @@ public class Inventory : Singleton<Inventory>
         if (inventoryItems[index].UseItem())
         {
             DecreaseItemStack(index);
-            SaveInventory();
         }
     }
 
@@ -111,7 +99,6 @@ public class Inventory : Singleton<Inventory>
         inventoryItems[index].RemoveItem();
         inventoryItems[index] = null;
         InventoryUI.instance.DrawItem(null, index);
-        SaveInventory();
     }
 
     private void DecreaseItemStack(int index)
@@ -168,51 +155,45 @@ public class Inventory : Singleton<Inventory>
         return null;
     }
 
-    private void LoadInventory()
+    private void LoadGame()
     {
-        // 加载保存的物品
-        if (SaveGame.Exists(INVENTORY_KEY_DATA))
+        for (int i = 0; i < inventorySize; i++)
         {
-            InventoryData loadData = SaveGame.Load<InventoryData>(INVENTORY_KEY_DATA);
-            for(int i = 0;i < inventorySize; i++)
+            if (inventoryToLoad[i] != null)
             {
-                if (loadData.ItemContent[i] != null)
-                {
-                    InventoryItem itemFromContent = ItemExistsInGameContent(loadData.ItemContent[i]);
-                    if (itemFromContent != null)
-                    {
-                        inventoryItems[i] = itemFromContent.CopyItem();
-                        inventoryItems[i].Quantity = loadData.ItemQuantity[i];
-                        InventoryUI.instance.DrawItem(inventoryItems[i], i);
-                    }
-                }
-                else
-                {
-                    inventoryItems[i] = null;
-                }
+                inventoryItems[i] = inventoryToLoad[i].CopyItem();
+                inventoryItems[i].Quantity = inventoryToLoad[i].Quantity;
+                InventoryUI.instance.DrawItem(inventoryItems[i], i);
             }
         }
     }
 
-    private void SaveInventory()
+
+    public void LoadData(GameData _data)
     {
-        // 保存背包数据
-        InventoryData saveData = new InventoryData();
-        saveData.ItemContent = new string[inventorySize];
-        saveData.ItemQuantity = new int[inventorySize];
-        for (int i = 0; i < inventorySize; i++)
+        inventoryToLoad = new InventoryItem[inventorySize];
+        int index = 0;
+        foreach (KeyValuePair<string, int> pair in _data.inventory)
         {
-            if (inventoryItems[i] == null)
+            InventoryItem itemFromContent = ItemExistsInGameContent(pair.Key);
+            if (itemFromContent != null && index < inventorySize)
             {
-                saveData.ItemContent[i] = null;
-                saveData.ItemQuantity[i] = 0;
-            }
-            else
-            {
-                saveData.ItemContent[i] = inventoryItems[i].ID;
-                saveData.ItemQuantity[i] = inventoryItems[i].Quantity;
+                inventoryToLoad[index] = itemFromContent.CopyItem();
+                inventoryToLoad[index].Quantity = pair.Value;
+                index++;
             }
         }
-        SaveGame.Save(INVENTORY_KEY_DATA, saveData);
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.inventory.Clear();
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (inventoryItems[i] != null)
+            {
+                _data.inventory.Add(inventoryItems[i].ID, inventoryItems[i].Quantity);
+            }
+        }
     }
 }

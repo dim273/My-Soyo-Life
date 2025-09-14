@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b51697cfc7870934cb1d5ca10aca3d6b
+guid: 292857a8f69c5fe49a41dfe5f14a19ba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigEnergyBall_0
+      name: fx_archer_gale_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 24
-        height: 24
+        x: 40
+        y: 86
+        width: 88
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,71 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e94f757dff66004c8e131301f141bcd
-      internalID: 762912721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigEnergyBall_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7134e5c6db2e50f4289cd0e93cfe12d2
-      internalID: -1070082257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigEnergyBall_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d85302b3c013e684e921f9e7783aa1e5
-      internalID: 908486772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BigEnergyBall_3
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7dbcc096a7c5781409816a6ccdf6c3ba
-      internalID: 67893301
+      spriteID: a3f6d3b1e1b0f9b4f85190772f137f25
+      internalID: 12389029
       vertices: []
       indices: 
       edges: []
@@ -191,10 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BigEnergyBall_0: 762912721
-      BigEnergyBall_1: -1070082257
-      BigEnergyBall_2: 908486772
-      BigEnergyBall_3: 67893301
+      fx_archer_gale_0: 12389029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

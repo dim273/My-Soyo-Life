@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum ItemType
@@ -18,6 +19,7 @@ public class InventoryItem : ScriptableObject
     public string ID;
     public string Name;
     public Sprite Icon;
+    public string ItemID;
     [TextArea] public string Description;
 
     [Header("Info")]
@@ -27,6 +29,14 @@ public class InventoryItem : ScriptableObject
     public int MaxStack;
 
     [HideInInspector] public int Quantity;
+
+    private void OnValidate()
+    {
+#if UNITY_EDITOR//只在编译器里运行
+        string path = AssetDatabase.GetAssetPath(this);
+        ItemID = AssetDatabase.AssetPathToGUID(path);
+#endif
+    }
 
     public InventoryItem CopyItem()
     {
