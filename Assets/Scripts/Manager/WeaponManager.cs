@@ -11,13 +11,13 @@ public class WeaponManager : Singleton<WeaponManager>
     [SerializeField] private TextMeshProUGUI weaponManaTMP;
 
 
-    public void EquipWeapon(Weapon weapon)     
+    public void EquipWeapon(Weapon weapon, WeaponItem weaponItem)     
     {    
         weaponIcon.sprite = weapon.Icon;
         weaponIcon.SetNativeSize();
         weaponIcon.gameObject.SetActive(true);
         weaponManaTMP.text = weapon.RequireMana.ToString();
         weaponManaTMP.gameObject.SetActive(true);
-        GameManager.instance.Player.PlayerAttack.EquipWeapon(weapon);
+        GameManager.instance.Player.PlayerAttack.EquipWeapon(weapon, weaponItem);
     }
 }

@@ -10,6 +10,6 @@ public class WeaponItem : InventoryItem
 
     public override void EquipItem()
     {
-        WeaponManager.instance.EquipWeapon(Weapon);
+        WeaponManager.instance.EquipWeapon(Weapon, this);
     }
 }

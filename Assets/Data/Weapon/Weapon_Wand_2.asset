@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65c84c3d1294db044869c1ba8ba8c323, type: 3}
-  m_Name: Weapon_Bow
+  m_Name: Weapon_Wand_2
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: ff85688753ec0c849baf9a424be021ce, type: 3}
+  Icon: {fileID: 21300000, guid: 99fa740fa9cb81e4081928425109d00b, type: 3}
   type: 0
-  Damage: 2
-  DamageBonus: 0.3
-  WindUpTime: 0.1
-  WindDownTime: 0.1
-  ProjectilePrefab: {fileID: 4869059584028606043, guid: 3aabfa1047311834ab04fc7bf43af6c8, type: 3}
-  RequireMana: 1
+  Damage: 12
+  DamageBonus: 1
+  WindUpTime: 0.2
+  WindDownTime: 0.2
+  ProjectilePrefab: {fileID: 584018561360523837, guid: 613e4ad2df7e6454aa7342c123825dcb, type: 3}
+  RequireMana: 18

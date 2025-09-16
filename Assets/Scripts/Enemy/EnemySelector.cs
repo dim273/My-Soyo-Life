@@ -14,6 +14,11 @@ public class EnemySelector : MonoBehaviour
         enemyBrain = GetComponent<EnemyBrain>();
     }
 
+    private void Start()
+    {
+        selectorSprite.SetActive(false);
+    }
+
     private void EnemySelectedCallback(EnemyBrain enemySelected)
     {
         if(enemyBrain == enemySelected)

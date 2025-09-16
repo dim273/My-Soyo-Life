@@ -32189,13 +32189,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68ab04e380c5ca41bcf93f9703e04fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initWeapon: {fileID: 11400000, guid: 0ccf3b06e2dbda146bcb34006454124c, type: 2}
+  initWeapon: {fileID: 11400000, guid: 8e9782692a876ad4bad313610cd30357, type: 2}
   attackPositions:
   - {fileID: 1343964420}
   - {fileID: 1047946545}
   - {fileID: 2125509799}
   - {fileID: 663609676}
   stats: {fileID: 11400000, guid: ba4f540fe126bf74a987589b65b1d1d6, type: 2}
+  gameContent: {fileID: 11400000, guid: 5752d56679d55eb47b31d32476509b1a, type: 2}
   slashFX: {fileID: 162003113}
   minDistanceMeleeAttack: 3
 --- !u!114 &1458034788

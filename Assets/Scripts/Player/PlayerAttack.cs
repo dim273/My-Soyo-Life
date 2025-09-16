@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, ISaveManager
 {
     [Header("Config")]
-    [SerializeField] private Weapon initWeapon;
+    [SerializeField] private WeaponItem initWeapon;         // 初始武器
     [SerializeField] private Transform[] attackPositions;
     [SerializeField] private PlayerStats stats;
+    [SerializeField] private GameContent gameContent;
 
     [Header("Melee Config")]
     [SerializeField] private ParticleSystem slashFX;
     [SerializeField] private float minDistanceMeleeAttack;
 
-    public Weapon curWeapon { get; set; }
+    public Weapon curWeapon { get; set; }       // 当前武器
 
+    private WeaponItem curWeaponItme;       // 当前武器对应的武器物品类
     private PlayerAC actions;
     private PlayerAnimations playerAnimations;
     private PlayerMovement playerMovement;
@@ -25,9 +27,11 @@ public class PlayerAttack : MonoBehaviour
 
     private Transform curAttackPosition;
     private float curAttackRotation;
+    private bool equipWeaponInStart = false;
 
     private void Awake()
     {
+        equipWeaponInStart = false;
         actions = new PlayerAC();
         playerAnimations = GetComponent<PlayerAnimations>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -36,10 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        WeaponManager.instance.EquipWeapon(initWeapon);
         actions.Attack.ClickAtack.performed += ctx => Attack();
-        curWeapon = initWeapon;
-        stats.TotalDamage = stats.BaseDamage + curWeapon.Damage;
     }
 
     private void Update()
@@ -53,9 +54,9 @@ public class PlayerAttack : MonoBehaviour
         attackCoroutine = StartCoroutine(IEAttack());
     } 
 
-    private void GetFireposition()
+    private void GetFireposition()       // 获取当前的攻击方向
     {
-        // 获取当前的攻击方向
+       
         Vector2 moveDirection = playerMovement.MoveDirection;
         switch (moveDirection.x)
         {
@@ -111,10 +112,10 @@ public class PlayerAttack : MonoBehaviour
         attackCoroutine = null;
     }
 
-    private void ManaAttack()
+    private void ManaAttack()       // 魔法攻击
     {
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, curAttackRotation));
-        // 魔法攻击
+        
         if (enemyTarget != null) 
         {
             // 如果锁定了敌人，则重新计算攻击角度
@@ -141,10 +142,12 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(Weapon newWeapon)
+
+    public void EquipWeapon(Weapon newWeapon, WeaponItem weaponItem)        // 换装备
     {
+        if (equipWeaponInStart) Inventory.instance.AddItem(curWeaponItme, 1);
         curWeapon = newWeapon;
-        stats.TotalDamage = stats.BaseDamage + curWeapon.Damage;
+        curWeaponItme = weaponItem;
     }
 
     private float GetAttackDamage()
@@ -171,6 +174,18 @@ public class PlayerAttack : MonoBehaviour
         enemyTarget = null;
     }
 
+    private InventoryItem ItemExistsInGameContent(string itemID)    // 在所有的游戏物品里面寻找对应的物品
+    {
+        for (int i = 0; i < gameContent.GameItems.Length; i++)
+        {
+            if (gameContent.GameItems[i].ID == itemID)
+            {
+                return gameContent.GameItems[i];
+            }
+        }
+        return null;
+    }
+
     private void OnEnable()
     {
         actions.Enable();
@@ -185,5 +200,29 @@ public class PlayerAttack : MonoBehaviour
         SelectionManager.OnEnemySelectedEvent -= EnemySelectedCallback;
         SelectionManager.OnNoSelectedEvent -= NoEnemySelectedCallback;
         EnemyHealth.OnEnemyDeadEvent -= NoEnemySelectedCallback;
+    }
+
+    public void LoadData(GameData _data)
+    {
+        InventoryItem loadItem = ItemExistsInGameContent(_data.equipedWeapon);
+        if (loadItem == null || _data.equipedWeapon == "empty")
+        {
+            WeaponManager.instance.EquipWeapon(initWeapon.Weapon, initWeapon);
+            curWeapon = initWeapon.Weapon;
+            curWeaponItme = initWeapon;
+        }
+        else
+        {
+            WeaponItem weaponItem = (WeaponItem)loadItem;
+            WeaponManager.instance.EquipWeapon(weaponItem.Weapon, weaponItem);
+            curWeaponItme = weaponItem;
+            curWeapon = weaponItem.Weapon;
+        }
+        equipWeaponInStart = true;
+    }
+
+    public void SaveData(ref GameData _data)
+    {
+        _data.equipedWeapon = curWeaponItme.ID;
     }
 }

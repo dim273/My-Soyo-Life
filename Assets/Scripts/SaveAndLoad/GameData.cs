@@ -10,12 +10,14 @@ public class GameData
     public int coin;
     public SerializableDictionary<string, int> inventory;
     public float[] playerStats;
+    public string equipedWeapon;
 
     public GameData()
     {
         this.coin = 100;
         inventory = new SerializableDictionary<string, int>();
         playerStats = new float[15];
+        equipedWeapon = "empty";
         
     }
 }

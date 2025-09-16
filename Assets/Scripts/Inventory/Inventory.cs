@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -62,9 +63,8 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         }
     }
 
-    private void AddItemFreeSlot(InventoryItem item, int quantity)
+    private void AddItemFreeSlot(InventoryItem item, int quantity)      // 寻找空位置添加物品
     {
-        // 寻找空位置添加物品
         for (int i = 0; i < inventorySize; i++) 
         {
             if (inventoryItems[i] != null) continue;
@@ -75,15 +75,15 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         }
     }
 
-    public void UseItem(int index)
+    public void UseItem(int index)      // 使用物品
     {
-        // 使用物品
         if (inventoryItems[index] == null) return;
 
         // 若为武器，则装备
         if (inventoryItems[index].Type == ItemType.Weapon)
         {
             inventoryItems[index].EquipItem();
+            EquipItem(index);
             return;
         }
 
@@ -101,7 +101,13 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         InventoryUI.instance.DrawItem(null, index);
     }
 
-    private void DecreaseItemStack(int index)
+    private void EquipItem(int index)               // 装备物品的处理
+    {
+        inventoryItems[index] = null;
+        InventoryUI.instance.DrawItem(null, index);
+    }
+
+    private void DecreaseItemStack(int index)           // 减少物品数量
     {
         // 减少物品的数量，然后分两种情况再讨论
         inventoryItems[index].Quantity--;
@@ -142,9 +148,8 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         }
     }
 
-    private InventoryItem ItemExistsInGameContent(string itemID)
+    private InventoryItem ItemExistsInGameContent(string itemID)    // 在所有的游戏物品里面寻找对应的物品
     {
-        // 在所有的游戏物品里面寻找对应的物品
         for (int i = 0; i < gameContent.GameItems.Length; i++)
         {
             if (gameContent.GameItems[i].ID == itemID)
@@ -154,6 +159,8 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         }
         return null;
     }
+
+    /***********************************背包的保存与加载部分**********************************************/
 
     private void LoadGame()
     {
@@ -167,7 +174,6 @@ public class Inventory : Singleton<Inventory>, ISaveManager
             }
         }
     }
-
 
     public void LoadData(GameData _data)
     {
@@ -196,4 +202,5 @@ public class Inventory : Singleton<Inventory>, ISaveManager
             }
         }
     }
+    /*****************************************************************************************************/
 }

@@ -203,13 +203,13 @@ public class UIManager : Singleton<UIManager>
         coinTMP.text = $"{CoinManager.instance.Coins}";
     }
 
-    private void UpdateStatsPanel()
+    private void UpdateStatsPanel()         // 更新各种UI数据
     {
-        // 更新各种UI数据
+        
         statLevelTMP.text = stats.Level.ToString();
         statHealthTMP.text = stats.MaxHealth.ToString();
         statManaTMP.text = stats.MaxMana.ToString();
-        statDamageTMP.text = stats.TotalDamage.ToString();
+        statDamageTMP.text = stats.BaseDamage.ToString();
         statCChanceTMP.text = stats.CriticalChance.ToString();
         statCDamageTMP.text = stats.CriticalDamage.ToString();
         statExpTMP.text = stats.CurrentExp.ToString();

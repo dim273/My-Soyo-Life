@@ -34,16 +34,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float amount)
     {
         CurrentHealth -= amount;
-        if(CurrentHealth <= 0)
+        DamageManager.instance.ShowDamageText(amount, transform);
+        if (CurrentHealth <= 0)
         {
             EnemyDead();
-
             // 杀死敌人的任务
             QuestManager.instance.AddProgress("Kill10Enemy", 1);
-        }
-        else
-        {
-            DamageManager.instance.ShowDamageText(amount, transform);
         }
     }
 
