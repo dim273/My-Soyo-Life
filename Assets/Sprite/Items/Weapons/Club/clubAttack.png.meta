@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2ec933a3593f6164abb3c0e04c8983f8
+guid: b4ddfec49e1340e439735f3b9fc8e11f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,85 +97,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpriteSheet_0
+      name: clubAttack_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
+        y: 224
+        width: 48
         height: 32
       alignment: 9
-      pivot: {x: 0.2, y: 0.8}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f60335b507eb060449f24beb402d4489
-      internalID: 1810928963
+      spriteID: a94b63b91404d9f49a663dd19221e864
+      internalID: 597463791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_1
+      name: clubAttack_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
+        x: 48
+        y: 224
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.2, y: 0.8}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82bcc642f6d292c49ba3d9ac15e91eac
-      internalID: -1475782069
+      spriteID: bab0c472bfcec4348b32b8ddd1b0bd54
+      internalID: 316639313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.2, y: 0.8}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b08a9821298c4264293c7d4c1be17422
-      internalID: -265994786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SpriteSheet_3
+      name: clubAttack_2
       rect:
         serializedVersion: 2
         x: 96
-        y: 0
-        width: 32
+        y: 224
+        width: 48
         height: 32
-      alignment: 9
-      pivot: {x: 0.2, y: 0.8}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb21efd4f2d922e488fdd91521cf9568
-      internalID: -766230965
+      spriteID: 79dd012870a7a0843aaa4c2ea73b696d
+      internalID: -1027223831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clubAttack_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 224
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8620acd5b95ecb45a3b6c93bf64f30a
+      internalID: -923242418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clubAttack_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cad87a8dc572014c896212ee74b2616
+      internalID: 1684650606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clubAttack_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a292579429606b4da10717e33ff0655
+      internalID: 1071300241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clubAttack_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 48
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 868a53292d2e4af45ac44c580603cec4
+      internalID: 1393509867
       vertices: []
       indices: 
       edges: []
@@ -191,10 +254,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpriteSheet_0: 1810928963
-      SpriteSheet_1: -1475782069
-      SpriteSheet_2: -265994786
-      SpriteSheet_3: -766230965
+      clubAttack_0: 597463791
+      clubAttack_1: 316639313
+      clubAttack_2: -1027223831
+      clubAttack_3: -923242418
+      clubAttack_4: 1684650606
+      clubAttack_5: 1071300241
+      clubAttack_6: 1393509867
+      clubAttack_7: -487800543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -168,9 +168,7 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         {
             if (inventoryToLoad[i] != null)
             {
-                inventoryItems[i] = inventoryToLoad[i].CopyItem();
-                inventoryItems[i].Quantity = inventoryToLoad[i].Quantity;
-                InventoryUI.instance.DrawItem(inventoryItems[i], i);
+                AddItem(inventoryToLoad[i], inventoryToLoad[i].Quantity);
             }
         }
     }
@@ -179,7 +177,7 @@ public class Inventory : Singleton<Inventory>, ISaveManager
     {
         inventoryToLoad = new InventoryItem[inventorySize];
         int index = 0;
-        foreach (KeyValuePair<string, int> pair in _data.inventory)
+        foreach (var pair in _data.inventory)
         {
             InventoryItem itemFromContent = ItemExistsInGameContent(pair.Key);
             if (itemFromContent != null && index < inventorySize)
@@ -198,7 +196,11 @@ public class Inventory : Singleton<Inventory>, ISaveManager
         {
             if (inventoryItems[i] != null)
             {
-                _data.inventory.Add(inventoryItems[i].ID, inventoryItems[i].Quantity);
+                // 遇到同类物品则添加，避免报错
+                if (!_data.inventory.ContainsKey(inventoryItems[i].ID))
+                    _data.inventory.Add(inventoryItems[i].ID, inventoryItems[i].Quantity);
+                else
+                    _data.inventory[inventoryItems[i].ID] += inventoryItems[i].Quantity;
             }
         }
     }

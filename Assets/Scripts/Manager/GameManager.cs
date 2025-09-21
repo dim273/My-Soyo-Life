@@ -5,9 +5,11 @@ public class GameManager : Singleton<GameManager>
     [Header("Player Info")]
     [SerializeField] private Player player;
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerAttack playerAttack;
 
     public Player Player => player;
     public PlayerMovement PlayerMovement => playerMovement;
+    public PlayerAttack PlayerAttack => playerAttack;
 
 
     private void Update()

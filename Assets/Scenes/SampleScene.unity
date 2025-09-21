@@ -28043,6 +28043,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 185464650}
     m_Modifications:
+    - target: {fileID: -8161610919953370213, guid: a51820dd427267143aac306e89567b26, type: 3}
+      propertyPath: dropItems.Array.data[0].Item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b59704aad8496344a72d3dccef0e4a3, type: 2}
+    - target: {fileID: -8161610919953370213, guid: a51820dd427267143aac306e89567b26, type: 3}
+      propertyPath: dropItems.Array.data[0].DropChance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 363403100576030862, guid: a51820dd427267143aac306e89567b26, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -39741,7 +39749,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1458034783}
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 1458034776}
+  playerAttack: {fileID: 1458034787}
 --- !u!1001 &1609860927
 PrefabInstance:
   m_ObjectHideFlags: 0

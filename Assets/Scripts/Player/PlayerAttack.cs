@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour, ISaveManager
 
     public Weapon curWeapon { get; set; }       // 当前武器
 
+    private bool canAttack;       // 控制攻击的接口
+
     private WeaponItem curWeaponItme;       // 当前武器对应的武器物品类
     private PlayerAC actions;
     private PlayerAnimations playerAnimations;
@@ -41,6 +43,7 @@ public class PlayerAttack : MonoBehaviour, ISaveManager
     private void Start()
     {
         actions.Attack.ClickAtack.performed += ctx => Attack();
+        canAttack = true;
     }
 
     private void Update()
@@ -50,7 +53,7 @@ public class PlayerAttack : MonoBehaviour, ISaveManager
 
     private void Attack()
     {
-        if(attackCoroutine != null) return;
+        if(attackCoroutine != null || canAttack == false) return;
         attackCoroutine = StartCoroutine(IEAttack());
     } 
 
@@ -108,7 +111,8 @@ public class PlayerAttack : MonoBehaviour, ISaveManager
         }
         yield return new WaitForSeconds(curWeapon.WindDownTime);
         playerAnimations.SetAttackAnimation(false);
-        playerMovement.ChangeMoveState(true);
+
+        if (curWeapon.type == WeaponType.Magic) playerMovement.ChangeMoveState(true);
         attackCoroutine = null;
     }
 
@@ -130,16 +134,27 @@ public class PlayerAttack : MonoBehaviour, ISaveManager
         playerMana.UseMana(curWeapon.RequireMana);
     }
 
-    private void MeleeAttack()
+    private void MeleeAttack()      // 物理攻击
     {
-        // 物理攻击
-        slashFX.transform.position = curAttackPosition.position;
-        slashFX.Play();
-        float currentDistanceToEnemy = Vector3.Distance(enemyTarget.transform.position, transform.position);
-        if(currentDistanceToEnemy <= minDistanceMeleeAttack)
-        {
-            enemyTarget.GetComponent<IDamageable>().TakeDamage(GetAttackDamage());
-        }
+        
+        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, curAttackRotation));
+        Projectile projectile = Instantiate(curWeapon.ProjectilePrefab, transform.position, rotation);
+        // projectile.Direction = Vector3.up;
+        projectile.Damage = GetAttackDamage();
+
+
+        //slashFX.transform.position = curAttackPosition.position;
+        //slashFX.Play();
+        //float currentDistanceToEnemy = Vector3.Distance(enemyTarget.transform.position, transform.position);
+        //if(currentDistanceToEnemy <= minDistanceMeleeAttack)
+        //{
+        //    enemyTarget.GetComponent<IDamageable>().TakeDamage(GetAttackDamage());
+        //}
+    }
+
+    public void ChangeAttackState(bool value)
+    {
+        canAttack = value;
     }
 
 

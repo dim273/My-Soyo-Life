@@ -25,9 +25,24 @@ public class Projectile : MonoBehaviour
         transform.Translate(Direction * (speed * Time.deltaTime));
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.GetComponent<IDamageable>()?.TakeDamage(Damage);
-        Destroy(gameObject);
+        if (speed != 0) DestroyProjectile();
     }
+
+    public void DestroyProjectile() => Destroy(gameObject);
+
+    public void StopAttack()
+    {
+        GameManager.instance.PlayerAttack.ChangeAttackState(false);
+        GameManager.instance.PlayerMovement.ChangeMoveState(false);
+    }
+    public void RecoverAttack()
+    {
+        GameManager.instance.PlayerAttack.ChangeAttackState(true);
+        GameManager.instance.PlayerMovement.ChangeMoveState(true);
+    }
+
 }
