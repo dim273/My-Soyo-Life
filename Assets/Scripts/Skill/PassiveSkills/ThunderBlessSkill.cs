@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class ThunderBlessSkill : SkillBase
 {
-    [Header("Info")]
-    [SerializeField] private float SpeedAdd;
+    [Header("SkillInfo")]
+    [SerializeField] private float speedAdd;
+
+    public float SpeedAdd { set; get; }
+
+    public override void UseSkill()
+    {
+        GameManager.instance.Player.PlayerMovement.ChangeMoveSpeed(SpeedAdd);
+    }
 }

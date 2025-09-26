@@ -9,11 +9,11 @@ public class SkillBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (skillType == SkillType.Passive) UseSkill();
+        
     }
 
     public virtual void UseSkill()
     {
-
+        
     }
 }

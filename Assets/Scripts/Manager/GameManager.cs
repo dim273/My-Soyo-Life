@@ -8,7 +8,6 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private PlayerAttack playerAttack;
 
     public Player Player => player;
-    public PlayerMovement PlayerMovement => playerMovement;
     public PlayerAttack PlayerAttack => playerAttack;
 
 

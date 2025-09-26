@@ -37,12 +37,12 @@ public class Projectile : MonoBehaviour
     public void StopAttack()
     {
         GameManager.instance.PlayerAttack.ChangeAttackState(false);
-        GameManager.instance.PlayerMovement.ChangeMoveState(false);
+        GameManager.instance.Player.PlayerMovement.ChangeMoveState(false);
     }
     public void RecoverAttack()
     {
         GameManager.instance.PlayerAttack.ChangeAttackState(true);
-        GameManager.instance.PlayerMovement.ChangeMoveState(true);
+        GameManager.instance.Player.PlayerMovement.ChangeMoveState(true);
     }
 
 }

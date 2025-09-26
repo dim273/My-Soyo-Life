@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed33f671b9310c1408f8fce2ee091747
+guid: d3300dcb6094c6d498f6c41d690dbdff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,253 +97,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: atlas1_0
+      name: Sword_0
       rect:
         serializedVersion: 2
-        x: 369
-        y: 354
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9912989082d6eab47b3675b1d361b210
-      internalID: -708573285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas1_1
-      rect:
-        serializedVersion: 2
-        x: 357
-        y: 368
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 715f8162304631645adfdf2261257d8f
-      internalID: 1029843167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas1_2
-      rect:
-        serializedVersion: 2
-        x: 405
-        y: 278
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ba9093b64121634a980ba362d0cf905
-      internalID: 855946118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas1_3
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 265
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6215b12f7ac0c804ba17586675ed4f11
-      internalID: -1242514351
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas1_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 470
-        width: 24
+        x: 0
+        y: 0
+        width: 48
         height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3db83023646536745a4311d6f9af9c15
-      internalID: -936562649
+      spriteID: 7195159b111632448a02ea0bb358797c
+      internalID: -846641623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas1_5
+      name: Sword_1
       rect:
         serializedVersion: 2
-        x: 464
-        y: 109
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 48
+        y: 0
+        width: 48
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b62694701be66041a0bab3f2c69df1f
-      internalID: -232388002
+      spriteID: 26f45bdbe8277f045bc6d21c2baa0f20
+      internalID: 2114126383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas1_6
+      name: Sword_2
       rect:
         serializedVersion: 2
-        x: 332
-        y: 141
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 0
+        width: 48
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5f2255b742f18144b8498367a4beb77
-      internalID: -1191884531
+      spriteID: d3b19c03a5e3bbc4fa7442fc779ee2d7
+      internalID: -1655551649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas1_7
+      name: Sword_3
       rect:
         serializedVersion: 2
-        x: 33
-        y: 32
-        width: 30
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1f82aeca182904347a647075ece8d211
-      internalID: 595925473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas1_8
-      rect:
-        serializedVersion: 2
-        x: 382
-        y: 121
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 2, z: 0, w: 2}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 548c2b301bac0384f9eb649f63b4850e
-      internalID: -776302571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: atlas1_9
-      rect:
-        serializedVersion: 2
-        x: 277
-        y: 94
-        width: 19
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 144
+        y: 0
+        width: 48
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1414e5072c8c57340a20b610203761d5
-      internalID: 1052701957
+      spriteID: bf94b557853ca7b4eacbf4bde0a34f8a
+      internalID: -1251966305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas1_10
+      name: Sword_4
       rect:
         serializedVersion: 2
-        x: 320
-        y: 19
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 0
+        width: 48
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6c29df15ec2c0740bd8bc36f83bc1d7
-      internalID: 743467859
+      spriteID: d589b0038208717488678c6e05b199d2
+      internalID: -828705535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas1_11
+      name: Sword_5
       rect:
         serializedVersion: 2
-        x: 384
-        y: 103
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 240
+        y: 0
+        width: 48
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f3a81cd15a5b954aae226a0902d3a9a
-      internalID: -1781724719
+      spriteID: eca82e1dd1f445b4bbd06d530cb55dc5
+      internalID: -507004028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61887db6a6f30454bbab778b4710fe92
+      internalID: -512075737
       vertices: []
       indices: 
       edges: []
@@ -359,18 +254,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      atlas1_0: -708573285
-      atlas1_1: 1029843167
-      atlas1_10: 743467859
-      atlas1_11: -1781724719
-      atlas1_2: 855946118
-      atlas1_3: -1242514351
-      atlas1_4: -936562649
-      atlas1_5: -232388002
-      atlas1_6: -1191884531
-      atlas1_7: 595925473
-      atlas1_8: -776302571
-      atlas1_9: 1052701957
+      Sword_0: -846641623
+      Sword_1: 2114126383
+      Sword_2: -1655551649
+      Sword_3: -1251966305
+      Sword_4: -828705535
+      Sword_5: -507004028
+      Sword_6: -512075737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

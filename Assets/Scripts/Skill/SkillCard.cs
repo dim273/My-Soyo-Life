@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SkillCard : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Config")]
+    [SerializeField] Skill skill;
 
-    // Update is called once per frame
-    void Update()
+    public void UnlockSkill()       // ½âËø¼¼ÄÜ
     {
-        
+
     }
 }

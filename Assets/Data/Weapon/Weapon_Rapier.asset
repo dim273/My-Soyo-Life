@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: fa2867f0cff4014479cdc99958d6a98d, type: 3}
   type: 1
-  Damage: 5
-  DamageBonus: 0.6
-  WindUpTime: 0.3
-  WindDownTime: 0.3
-  ProjectilePrefab: {fileID: 0}
+  Damage: 3
+  DamageBonus: 0.3
+  WindUpTime: 0
+  WindDownTime: 0
+  ProjectilePrefab: {fileID: 7574607127122352980, guid: e5654156f5f9fa845a5f93db00a39937, type: 3}
   RequireMana: 0

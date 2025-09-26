@@ -6,4 +6,6 @@ using UnityEngine;
 public class GameContent : ScriptableObject
 {
     public InventoryItem[] GameItems;
+
+    public Skill[] Skills;
 }

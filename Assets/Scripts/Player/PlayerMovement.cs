@@ -57,11 +57,12 @@ public class PlayerMovement : MonoBehaviour
         }
         playerAnimations.SetMoveBool(true);
         playerAnimations.SetMoveAnimation(moveDirection);
-        
     }
 
     // ¿ØÖÆcanMoveµÄÖµ
     public void ChangeMoveState(bool value) => canMove = value;
+
+    public void ChangeMoveSpeed(float value) => speed += value;
 
     private void OnEnable()
     {

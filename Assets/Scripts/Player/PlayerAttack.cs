@@ -136,12 +136,22 @@ public class PlayerAttack : MonoBehaviour, ISaveManager
 
     private void MeleeAttack()      // ÎïÀí¹¥»÷
     {
-        
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, curAttackRotation));
-        Projectile projectile = Instantiate(curWeapon.ProjectilePrefab, transform.position, rotation);
-        // projectile.Direction = Vector3.up;
+        Vector2 meleePosition;
+        if (curAttackPosition == attackPositions[1] || curAttackPosition == attackPositions[3])
+        {
+            float _x = transform.position.x;
+            float _y = transform.position.y;
+            meleePosition = new Vector2(_x, _y - 0.2f);
+        }
+        else
+        {
+            meleePosition = transform.position;
+        }
+        Projectile projectile = Instantiate(curWeapon.ProjectilePrefab, meleePosition, rotation);
+        
+        projectile.Direction = Vector3.up;
         projectile.Damage = GetAttackDamage();
-
 
         //slashFX.transform.position = curAttackPosition.position;
         //slashFX.Play();

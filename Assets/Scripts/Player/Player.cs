@@ -11,8 +11,8 @@ public class Player : MonoBehaviour, ISaveManager
 
     public PlayerMana PlayerMana { get; private set; }
     public PlayerHealth PlayerHealth { get; private set; }
-
     public PlayerAttack PlayerAttack { get; private set; }
+    public PlayerMovement PlayerMovement { get; private set; }
 
     private PlayerAnimations animations;
 
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, ISaveManager
         PlayerMana = GetComponent<PlayerMana>();
         PlayerHealth = GetComponent<PlayerHealth>();
         PlayerAttack = GetComponent<PlayerAttack>();
+        PlayerMovement = GetComponent<PlayerMovement>();
     }
 
 
