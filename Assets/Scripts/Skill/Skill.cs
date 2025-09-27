@@ -16,6 +16,7 @@ public class Skill : ScriptableObject
     public string Name;
     public string ID;
     public SkillBase skillBase;
+    public GameObject skillCard;
     public SkillType Type;
 
     [Header("Info")]
